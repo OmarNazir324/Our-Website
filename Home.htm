@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Don’t Promise, We Deliver</title>
+
+  <style>
+    /* ===== Theme variables ===== */
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --nav-bg: #ffffff;
+      --nav-text: #111827;
+      --accent: #2563eb;
+      --card-bg: #ffffff;
+      --proven-bg: #f9fafb;
+      --footer-bg: #111827;
+      --footer-text: #ffffff;
+      --btn-bg: #ffffff;
+      --btn-text: #2563eb;
+      /* light-mode hero: subtle, light gradient and dark text */
+      --hero-gradient-from: #f8fafc;
+      --hero-gradient-to: #eef2ff;
+      --hero-text: var(--text);
+      --team-image-bg: #e5e7eb;
+      --shadow: rgba(0,0,0,0.05);
+      --card-shadow: 0 10px 30px var(--shadow);
+    }
+
+    /* Dark theme overrides */
+    [data-theme="dark"] {
+      --bg: #0b1220; /* page background */
+      --text: #e6eef8;
+      --muted: #94a3b8;
+      --nav-bg: #071127;
+      --nav-text: #e6eef8;
+      --accent: #60a5fa;
+      --card-bg: #0f1724;
+      --proven-bg: #071227;
+      --footer-bg: #020617;
+      --footer-text: #cbd5e1;
+      --btn-bg: #111827;
+      --btn-text: #ffffff;
+      --hero-gradient-from: #07112a;
+      --hero-gradient-to: #0b1226;
+      --hero-text: #ffffff;
+      --team-image-bg: #0b1220;
+      --shadow: rgba(0,0,0,0.6);
+      --card-shadow: 0 10px 30px var(--shadow);
+    }
+
+    /* ===== Global Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 50px;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      backdrop-filter: blur(12px);
+    }
+    .nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+    nav ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: 0;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--nav-text);
+      font-weight: bold;
+    }
+.nav-social {
+  display: flex;
+  align-items: end;
+  gap: 14px;
+}
+
+.nav-social a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.nav-social a:hover {
+  transform: translateY(-3px);
+  background: var(--accent);
+}
+
+.nav-social img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Dark mode icon visibility */
+[data-theme="dark"] .nav-social a {
+  background: rgba(255,255,255,0.05);
+}
+
+    nav a.active {
+      color: var(--accent);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--hero-gradient-from), var(--hero-gradient-to));
+      color: var(--hero-text);
+        padding: 20px 0 0;
+      
+    }
+    .hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+
+  /* clarity + premium look */
+  filter: contrast(1.05) brightness(1.05);
+}
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6,11,26,0) 0%,
+    rgba(6,11,26,0.4) 100%
+  );
+}
+body.light .hero {
+  background: radial-gradient(
+    circle at top,
+    #f4f7ff,
+    #e6ecff
+  );
+}
+
+body.light .hero-image img {
+  filter: contrast(1.05) brightness(0.95);
+}
+@media (max-width: 768px) {
+  .hero {
+    padding: 90px 0 60px;
+  }
+
+  .hero-image {
+    margin-bottom: 10px;
+    border-radius: 16px;
+  }
+}
+.hero-image {
+  animation: fadeUp 1s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 10px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+}
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 10px;
+      color:gold;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Make hero CTA more prominent on both themes */
+    .hero .btn {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn {
+      padding: 10px 28px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+/* ===== projects-timeline ===== */
+    .projects-timeline {
+  padding: 100px 20px;
+  background: var(--bg);
+  margin-top:132px;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 80px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1400px;
+  height: 260px;
+  margin: auto;
+}
+
+/* الخط الرئيسي */
+.main-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #aaa, #000, #aaa);
+  opacity: 0.5;
+}
+
+/* النود */
+.node {
+  position: absolute;
+  left: var(--x);
+  transform: translateX(-50%);
+}
+
+/* النود فوق */
+.node.top {
+  top: 50%;
+}
+
+/* النود تحت */
+.node.bottom {
+  top: 50%;
+}
+
+/* الفرع */
+.branch {
+  position: absolute;
+  width: 2px;
+  background: #999;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node.top .branch {
+  height: 60px;
+  top: -60px;
+}
+
+.node.bottom .branch {
+  height: 60px;
+  top: 3px;
+}
+
+/* الكارد */
+.project-card {
+  background: #fff;
+  color: #000;
+  padding: 14px 26px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.node.top .project-card {
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node.bottom .project-card {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* النقطة */
+.pulse {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+/* النور */
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .6; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* ===== Services (New Design) ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* Service image placeholder */
+.service-image {
+  width: 100%;
+  height: 180px;
+  background: var(--team-image-bg);
+  border-radius: 14px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* If you add image later */
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.service-card h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.service-card .price {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+    /* ===== Proven Section ===== */
+    .proven {
+      background: var(--proven-bg);
+      text-align: center;
+    }
+
+    /* ===== Team ===== */
+   .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+   .team-card {
+  background: var(--card-bg);
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+/* container بتاع الصورة */
+.team-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--team-image-bg);
+
+  display: flex;              /* ⭐ مهم */
+  align-items: center;        /* توسيط رأسي */
+  justify-content: center;    /* توسيط أفقي */
+  overflow: hidden;           /* يمنع خروج الصورة */
+}
+
+/* الصورة نفسها */
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* تملى المساحة بدون تشويه */
+}
+
+/* العنوان */
+.team-card h3 {
+  margin: 10px 0 6px;
+}
+
+/* الوظيفة */
+.team-card span {
+  color: var(--accent);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.email-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-size: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(37,99,235,0.35);
+}
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* Theme toggle */
+    #theme-toggle {
+      position: absolute;
+      right: 18px;
+      top: 5px;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--nav-text);
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    /* invert logo for dark theme if needed */
+    [data-theme="dark"] .nav-logo img { filter: brightness(0) invert(1); }
+
+    #theme-toggle:focus {
+      outline: 2px solid rgba(37,99,235,0.25);
+    }
+
+    /* ===== Scroll Animation ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Navbar ===== -->
+ <nav>
+  <div class="nav-container">
+
+    <!-- Left: Social Icons -->
+    <!-- <div class="nav-social">
+      <a href="https://www.linkedin.com/company/tatweer-information-technology/" target="_blank" aria-label="LinkedIn">
+        <img src="Images/linkedin.png" alt="LinkedIn">
+      </a>
+    </div> -->
+
+    <!-- Center: Menu -->
+    <ul>
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#proven" class="nav-link">Why Us</a></li>
+      <li><a href="#team" class="nav-link">Team</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Right: Theme Toggle -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</nav>
+
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="home">
+  <div class="container">
+    <div class="hero-image">
+      <img src="Images/back.png" alt="Hero Image">
+    </div>
+    <h1>We Do Not Only Promise, We Deliver</h1>
+    <p>Proven digital solutions that save time, cost, and risk.</p>
+  </div>
+</section>
+  <!-- ===== projects-timeline ===== -->
+
+<section class="projects-timeline">
+  <h4 class="timeline-title">Proven Projects</h4>
+
+  <div class="timeline-wrapper">
+
+    <!-- Main Line -->
+    <div class="main-line"></div>
+
+    <!-- Project -->
+    <div class="node top" style="--x:10%">
+      <span class="pulse"></span>
+      <div class="branch"></div>
+      <div class="project-card">Accounting System</div>
+    </div>
+
+    <div class="node bottom" style="--x:30%">
+      <span class="pulse"></span>
+      <div class="branch"></div>
+      <div class="project-card">ERP Solution</div>
+    </div>
+
+    <div class="node top" style="--x:50%">
+      <span class="pulse"></span>
+      <div class="branch"></div>
+      <div class="project-card">HR System</div>
+    </div>
+
+    <div class="node bottom" style="--x:70%">
+      <span class="pulse"></span>
+      <div class="branch"></div>
+      <div class="project-card">School Management</div>
+    </div>
+
+    <div class="node top" style="--x:90%">
+      <span class="pulse"></span>
+      <div class="branch"></div>
+      <div class="project-card">E-Invoicing</div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- ===== Services ===== -->
+<section id="custom-services">
+  <div class="container reveal">
+    <h2>Custom Services</h2>
+    <p class="subtitle">Built specifically for your business needs</p>
+
+    <div class="services-grid" id="customServicesGrid">
+      <!-- Services will be injected here -->
+    </div>
+  </div>
+</section>
+
+<section id="ready-services" class="proven">
+  <div class="container reveal">
+    <h2>Ready-Made Solutions</h2>
+    <p class="subtitle">Proven systems, ready to deploy</p>
+
+    <div class="services-grid" id="readyServicesGrid">
+      <!-- Ready services will be loaded here -->
+    </div>
+  </div>
+</section>
+
+  
+
+  <!-- ===== Proven ===== -->
+  <section class="proven" id="proven">
+    <div class="container reveal">
+      <h2>Proven & Tested Solutions</h2>
+      <p class="subtitle">
+        Built once, improved many times, delivered with confidence.
+      </p>
+      <p>
+        Our systems are already implemented, maintained, and optimized
+        across multiple clients — so most issues are solved before your
+        project even starts.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Team ===== -->
+ <section id="team">
+  <div class="container reveal">
+    <h2>Meet the Team</h2>
+    <p class="subtitle">The people behind every delivery</p>
+
+    <div class="team-grid" id="teamGrid">
+      <!-- Team members will be injected here -->
+    </div>
+  </div>
+</section>
+
+
+  <!-- ===== Contact ===== -->
+  
+<section id="contact">
+  <div class="container reveal">
+    <h2>Let’s Work Together</h2>
+    <p class="subtitle">
+      Ready to build something proven and reliable?
+    </p>
+
+    <a href="mailto:info@yourcompany.com" class="btn email-btn">
+      📧 Email Us
+    </a>
+  </div>
+</section>
+
+  <footer>
+    <p>© 2025 — We Don’t Promise, We Deliver</p>
+  </footer>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+ const grid = document.getElementById("customServicesGrid");
+const API_URL = "http://192.168.1.215:8080/api/Emp/";
+const readyGrid = document.getElementById("readyServicesGrid");
+
+async function loadReadyServices() {
+  try {
+    const response = await fetch(API_URL + "GetReadyServ");
+
+    if (!response.ok) {
+      throw new Error("Failed to load ready services");
+    }
+
+    const services = await response.json();
+    readyGrid.innerHTML = "";
+
+    services.forEach(service => {
+      const card = document.createElement("div");
+      card.className = "service-card";
+
+      card.innerHTML = `
+        <div class="service-image">
+          <img src="Images/${service.Ser_Image}" alt="${service.Ser_Name}">
+        </div>
+        <h3>${service.Ser_Name}</h3>
+        <span class="price">$${service.price.toLocaleString()}</span>
+        <p>${service.Ser_desc}</p>
+      `;
+
+      readyGrid.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error(error);
+    readyGrid.innerHTML = "<p>Unable to load ready-made solutions.</p>";
+  }
+}
+
+loadReadyServices();
+
+fetch(API_URL+"GetCustomServ")
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("Failed to fetch services");
+    }
+    return res.json();
+  })
+  .then(data => {
+
+    // لو مفيش بيانات
+    if (!Array.isArray(data) || data.length === 0) {
+      grid.innerHTML = "<p>No services available.</p>";
+      return;
+    }
+
+    data.forEach(service => {
+      const card = document.createElement("div");
+      card.className = "service-card";
+
+      card.innerHTML = `
+        <div class="service-image">
+          <img src="Images/${service.ser_Image ?? service.Ser_Image}" 
+               alt="${service.ser_Name ?? service.Ser_Name}">
+        </div>
+        <h3>${service.ser_Name ?? service.Ser_Name}</h3>
+        <span class="price">$${(service.price || 0).toLocaleString()}+</span>
+        <p>${service.ser_desc ?? service.Ser_desc}</p>
+      `;
+
+      grid.appendChild(card);
+    });
+  })
+  .catch(error => {
+    console.error(error);
+    grid.innerHTML = "<p>Unable to load services.</p>";
+  });
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+const teamGrid = document.getElementById("teamGrid");
+
+async function loadTeam() {
+  try {
+    const response = await fetch(API_URL+"GetEmp");
+    const teamMembers = await response.json();
+
+    teamGrid.innerHTML = "";
+
+    teamMembers.forEach(member => {
+      const card = document.createElement("div");
+      card.className = "team-card";
+
+      card.innerHTML = `
+        <div class="team-image">
+          ${
+            member.Image_Name
+              ? `<img src="Images/${member.Image_Name}" alt="${member.M_Name}">`
+              : ""
+          }
+        </div>
+        <h3>${member.M_Name}</h3>
+        <span>${member.M_Tilte}</span>
+        <p>${member.M_Descreption}</p>
+      `;
+
+      teamGrid.appendChild(card);
+    });
+    } catch (error) {
+      console.error("Failed to load team data:", error);
+      teamGrid.innerHTML = "<p>Unable to load team members.</p>";
+    }
+  }
+
+  loadTeam();
+
+  // ===== Theme toggle & persistence =====
+  (function () {
+    const themeToggle = document.getElementById('theme-toggle');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (themeToggle) themeToggle.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeToggle) themeToggle.textContent = '🌙';
+      }
+    }
+
+    function initTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        applyTheme(saved);
+        return;
+      }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+      });
+    }
+
+    initTheme();
+  })();
+
+  // ===== Services scroll controls =====
+  (function () {
+    const wrapper = document.querySelector('.services-wrapper');
+    const list = document.querySelector('.services-list');
+    const btnLeft = document.querySelector('.scroll-btn.left');
+    const btnRight = document.querySelector('.scroll-btn.right');
+
+    if (!list || !btnLeft || !btnRight || !wrapper) return;
+
+    const getScrollAmount = () => Math.round(list.clientWidth * 0.8);
+
+    function updateButtons() {
+      const maxScroll = list.scrollWidth - list.clientWidth;
+      btnLeft.classList.toggle('hidden', list.scrollLeft <= 4);
+      btnRight.classList.toggle('hidden', list.scrollLeft >= maxScroll - 4);
+    }
+
+    btnLeft.addEventListener('click', () => {
+      list.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      list.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    list.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+
+    // Keyboard support when wrapper is focused
+    wrapper.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); list.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); list.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }); }
+    });
+
+    // initialize visibility
+    updateButtons();
+  })();
+
+  </script>
+
+</body>
+</html>
